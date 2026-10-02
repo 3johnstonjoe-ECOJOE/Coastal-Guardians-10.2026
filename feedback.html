@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Send feedback about Coastal Guardian, an educational Louisiana coastal restoration strategy game.">
+<meta property="og:title" content="Coastal Guardian Feedback">
+<meta property="og:description" content="Help improve Coastal Guardian by sharing feedback on the kiosk or Full Campaign experience.">
+<meta name="theme-color" content="#0A5151">
+<title>Coastal Guardian — Feedback</title>
+<style>
+:root{--bg:#06171e;--panel:#0d2b35;--text:#effbfc;--muted:#b4d0d5;--accent:#50d3b7;--gold:#F2C14E;--line:rgba(255,255,255,.15)}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at top left,#184757 0,#071a22 40%,#041015 100%);color:var(--text);min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:28px 18px 60px} nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+a.btn,button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);font:850 14px/1.2 inherit;text-decoration:none;cursor:pointer}
+a.btn{background:#173f4b;color:#fff} button{background:linear-gradient(135deg,var(--gold),#ffdc8b);color:#073737;border-color:#fff0b8} button:disabled{opacity:.55;cursor:wait}
+.card{background:linear-gradient(180deg,rgba(18,57,68,.97),rgba(8,31,39,.97));border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 70px rgba(0,0,0,.35);overflow:hidden}
+.head{padding:24px;border-bottom:1px solid var(--line)} h1{margin:4px 0 8px;font-size:32px} .eyebrow{color:var(--accent);font-size:12px;font-weight:950;letter-spacing:.12em;text-transform:uppercase} .muted{color:var(--muted);line-height:1.5}
+.body{padding:24px} .source{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px} .pill{padding:6px 9px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:12px;font-weight:800}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px} .full{grid-column:1/-1}
+label{display:flex;flex-direction:column;gap:6px;color:#9eeedd;font-size:12px;font-weight:900} input,select,textarea{width:100%;border:1px solid var(--line);border-radius:12px;background:#061b22;color:#fff;padding:11px 12px;font:inherit;outline:none} input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(80,211,183,.14)} textarea{min-height:110px;resize:vertical}
+.rating-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px} .rating-grid label{font-size:11px}
+.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px} #status{font-size:13px;color:var(--muted)} .success{color:#8ff0ba!important} .error{color:#ff9c9c!important}
+.hp{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.note{margin-top:16px;padding:12px;border:1px solid rgba(80,211,183,.23);border-radius:14px;background:rgba(80,211,183,.07);color:#d9f5f0;font-size:12px;line-height:1.45}
+@media(max-width:720px){.grid,.rating-grid{grid-template-columns:1fr}.head,.body{padding:18px}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="btn" href="index.html">← Kiosk / Website Home</a><a class="btn" href="full-campaign.html">Full Campaign</a></nav>
+<section class="card">
+<div class="head"><div class="eyebrow">Coastal Guardian</div><h1>Send Feedback</h1><div class="muted">Tell me what worked, what was confusing, or what you would change. Name and contact information are optional.</div></div>
+<div class="body">
+<div class="source"><span class="pill" id="gamePill">Game: Website</span><span class="pill" id="versionPill">Version: —</span></div>
+<form id="feedbackForm">
+<div class="hp" aria-hidden="true"><label>Leave this blank<input id="websiteField" autocomplete="off" tabindex="-1"></label></div>
+<div class="grid">
+<label>Reviewer role
+<select id="role"><option value="">Optional</option><option>Public visitor</option><option>Student</option><option>Teacher / educator</option><option>Coastal professional</option><option>Government / agency</option><option>NGO / nonprofit</option><option>Other</option></select>
+</label>
+<label>Feedback type
+<select id="category"><option value="general">General feedback</option><option value="bug">Bug / problem</option><option value="suggestion">Suggestion</option><option value="education">Educational content</option><option value="accessibility">Accessibility / usability</option><option value="other">Other</option></select>
+</label>
+<label>Name (optional)<input id="name" maxlength="120" autocomplete="name"></label>
+<label>Email (optional)<input id="email" type="email" maxlength="200" autocomplete="email"></label>
+<div class="full rating-grid">
+<label>Educational value<select id="educational"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+<label>Ease of use<select id="ease"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+<label>Visual quality<select id="visual"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+<label>Overall rating<select id="overall"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+</div>
+<label class="full">Bug or issue details (if applicable)<textarea id="bug" maxlength="4000" placeholder="What happened? What were you trying to do?"></textarea></label>
+<label class="full">Comments / suggestions<textarea id="comments" maxlength="6000" placeholder="What should I keep, change, add, or clarify?"></textarea></label>
+</div>
+<div class="actions"><button id="submitBtn" type="submit">Submit Feedback</button><span id="status" role="status" aria-live="polite"></span></div>
+</form>
+<div class="note">Feedback is stored privately for Coastal Guardian development. Public visitors cannot view other submissions.</div>
+</div></section></div>
+<script>
+const SUPABASE_URL="https://uzjxkohfpcbnexljgfdd.supabase.co";
+const SUPABASE_KEY="sb_publishable_Q_XHOPtwfAw1Cq6YjI_wAQ_Vw_vXvzx";
+const qs=new URLSearchParams(location.search);
+const rawGame=(qs.get('game')||'website').toLowerCase();
+const allowedGames=['full_campaign','kiosk','website','other'];
+const game=allowedGames.includes(rawGame)?rawGame:'other';
+const version=(qs.get('version')||'').slice(0,80);
+const context={
+  mode:(qs.get('mode')||'').slice(0,40),
+  stage:(qs.get('stage')||'').slice(0,20),
+  score:(qs.get('score')||'').slice(0,20),
+  scenario:(qs.get('scenario')||'').slice(0,120)
+};
+const labels={full_campaign:'Full Campaign',kiosk:'Kiosk',website:'Website',other:'Other'};
+document.getElementById('gamePill').textContent='Game: '+labels[game];
+document.getElementById('versionPill').textContent='Version: '+(version||'Not specified');
+const val=id=>document.getElementById(id).value.trim();
+const rating=id=>{const v=val(id);return v?Number(v):null};
+document.getElementById('feedbackForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const status=document.getElementById('status'),btn=document.getElementById('submitBtn');
+  status.className='';status.textContent='';
+  if(val('websiteField')){status.textContent='Thanks.';return}
+  if(!val('comments')&&!val('bug')&&!rating('overall')){status.className='error';status.textContent='Please add a comment, issue, or rating.';return}
+  btn.disabled=true;status.textContent='Submitting…';
+  const payload={
+    game_type:game,game_version:version||null,reviewer_role:val('role')||null,reviewer_name:val('name')||null,contact_email:val('email')||null,
+    category:val('category')||'general',educational_value:rating('educational'),ease_of_use:rating('ease'),visual_quality:rating('visual'),
+    overall_rating:rating('overall'),bug_report:val('bug')||null,comments:val('comments')||null,source_url:location.href.split('#')[0],status:'new',
+    metadata:{referrer:document.referrer||null,viewport:innerWidth+'x'+innerHeight,...context}
+  };
+  try{
+    const res=await fetch(SUPABASE_URL+'/rest/v1/feedback',{method:'POST',headers:{apikey:SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(payload)});
+    if(!res.ok)throw new Error('Submission failed ('+res.status+').');
+    e.target.reset();status.className='success';status.textContent='Thank you — your feedback was submitted.';
+  }catch(err){status.className='error';status.textContent='Could not submit feedback. Please try again.';console.error(err)}
+  finally{btn.disabled=false}
+});
+</script></body></html>
